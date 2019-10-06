@@ -11,3 +11,7 @@ We started our first prototyping stage for 701. We grabbed quite a few random pi
 [2] https://medium.goodnotes.com/study-with-ease-the-best-way-to-take-notes-2749a3e8297b   Date accessed:04/10/2019
 [3] http://www.gamesprecipice.com/role-of-playtesting/   Date accessed:05/10/2019
 ```
+
+#### Navigation
+Home: [DeanHarland.github.io](https://DeanHarland.github.io) <br />
+Week 2: [DeanHarland.github.io/Week2](https://DeanHarland.github.io/Week2) <br />
