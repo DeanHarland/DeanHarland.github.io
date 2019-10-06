@@ -5,3 +5,4 @@ Critical reflection through the use of weekly blogs is a great way to continuall
 ### Weekly Reports
 
 Week 1: [DeanHarland.github.io/Week1](https://DeanHarland.github.io/Week1)
+Week 2: [DeanHarland.github.io/Week2](https://DeanHarland.github.io/Week2)
