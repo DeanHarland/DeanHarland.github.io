@@ -1,4 +1,4 @@
-### Week 2
+### Week 4
 Planning
 While working on my 702 AI component I found myself mindlessly working on it each day, deciding at the start of each day what I would work on. Although this can be quite good allowing me to have more flexibility on what I work on each day, it was hard to see the bigger picture. With normal assignments this would normally work quite well, however because we have 3 weeks per component, planning would better my time management and workflow.
 
@@ -13,5 +13,5 @@ Although I could use the popular agile methodology[2], which allows for consiste
 
 #### Navigation
 Home: [DeanHarland.github.io](https://DeanHarland.github.io) <br />
-Week 1: [DeanHarland.github.io/Week3](https://DeanHarland.github.io/Week1) <br />
-Week 3: [DeanHarland.github.io/Week5](https://DeanHarland.github.io/Week3) <br />
+Week 3: [DeanHarland.github.io/Week3](https://DeanHarland.github.io/Week3) <br />
+Week 5: [DeanHarland.github.io/Week5](https://DeanHarland.github.io/Week5) <br />
