@@ -9,5 +9,5 @@ This leads me to the thought of only using unreal engine 4 for the past few year
 
 #### Navigation
 Home: [DeanHarland.github.io](https://DeanHarland.github.io) <br />
-Week 8: [DeanHarland.github.io/Week1](https://DeanHarland.github.io/Week8) <br />
-Week 10: [DeanHarland.github.io/Week3](https://DeanHarland.github.io/Week10) <br />
+Week 8: [DeanHarland.github.io/Week8](https://DeanHarland.github.io/Week8) <br />
+Week 10: [DeanHarland.github.io/Week10](https://DeanHarland.github.io/Week10) <br />
