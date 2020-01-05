@@ -10,5 +10,5 @@ Assest resources
 
 #### Navigation
 Home: [DeanHarland.github.io](https://DeanHarland.github.io) <br />
-Week 7: [DeanHarland.github.io/Week7](https://DeanHarland.github.io/Week1) <br />
-Week 9: [DeanHarland.github.io/Week9](https://DeanHarland.github.io/Week3) <br />
+Week 7: [DeanHarland.github.io/Week7](https://DeanHarland.github.io/Week7) <br />
+Week 9: [DeanHarland.github.io/Week9](https://DeanHarland.github.io/Week9) <br />
