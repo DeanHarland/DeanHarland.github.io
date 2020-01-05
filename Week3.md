@@ -15,5 +15,5 @@ Next group project I will be making sure to get a means of group communication b
 
 #### Navigation
 Home: [DeanHarland.github.io](https://DeanHarland.github.io) <br />
-Week 1: [DeanHarland.github.io/Week2](https://DeanHarland.github.io/Week1) <br />
-Week 3: [DeanHarland.github.io/Week4](https://DeanHarland.github.io/Week3) <br />
+Week 1: [DeanHarland.github.io/Week2](https://DeanHarland.github.io/Week2) <br />
+Week 3: [DeanHarland.github.io/Week4](https://DeanHarland.github.io/Week4) <br />
