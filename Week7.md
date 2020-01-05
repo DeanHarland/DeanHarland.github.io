@@ -8,8 +8,6 @@ These key points are: The objective, The subject, The audience, The place and Th
 Setting a clear objective for the presentation will help filter what I put into that presentation because I can ask myself if what i’m saying is going to help achieve the objective. The subject is linked to the objective but are not exactly the same thing. However, because of the type of work I'm doing it will generally be the assignment briefs question.The audience and the place also can be a key factor in planning a presentation however again because it is mainly university work I can assume that the audience will be knowledgeable in the field of what I am presenting. The time of day can also affect how the audience reacts to your presentation, such as in the morning people are generally more alert but getting towards lunchtime people can start to feel hungry and lose concentration.
 This method is not as detailed as other ways, however this is a great generalized presentation preset for identifying the way to move forwards in planning out a project.
 
-Maybe add another method and compare the two
-
 ### References
 ```
 [1] https://www.skillsyouneed.com/present/prepare-presentation.html 
