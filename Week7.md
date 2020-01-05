@@ -17,5 +17,5 @@ Maybe add another method and compare the two
 
 #### Navigation
 Home: [DeanHarland.github.io](https://DeanHarland.github.io) <br />
-Week 1: [DeanHarland.github.io/Week6](https://DeanHarland.github.io/Week1) <br />
-Week 3: [DeanHarland.github.io/Week8](https://DeanHarland.github.io/Week3) <br />
+Week 6: [DeanHarland.github.io/Week6](https://DeanHarland.github.io/Week6) <br />
+Week 8: [DeanHarland.github.io/Week8](https://DeanHarland.github.io/Week8) <br />
