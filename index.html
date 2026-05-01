@@ -131,6 +131,85 @@
       color: #b4c1d8;
     }
 
+    .contact-form-wrap {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .contact-form {
+      animation: fade-in-up 0.75s ease both;
+    }
+
+    .form-field {
+      transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    }
+
+    .form-field:focus {
+      border-color: rgba(79, 179, 255, 0.65);
+      box-shadow: 0 0 0 0.2rem rgba(79, 179, 255, 0.18);
+      transform: translateY(-1px);
+    }
+
+    .field-hint {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .hp-wrap {
+      position: absolute;
+      left: -9999px;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+
+    .form-status {
+      min-height: 1.5rem;
+      margin-top: 0.75rem;
+      font-size: 0.95rem;
+    }
+
+    .form-status.success {
+      color: #91ffc8;
+    }
+
+    .form-status.error {
+      color: #ffb4b4;
+    }
+
+    .form-status.info {
+      color: #c4dcff;
+    }
+
+    @keyframes fade-in-up {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 576px) {
+      .section-padding {
+        padding: 4rem 0;
+      }
+
+      .contact-form .btn {
+        width: 100%;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .contact-form,
+      .form-field {
+        animation: none;
+        transition: none;
+      }
+    }
+
     footer {
       border-top: 1px solid rgba(255, 255, 255, 0.1);
       color: #c6d2e8;
@@ -267,31 +346,37 @@
     <!-- Contact Section -->
     <section id="contact" class="section-padding pt-0">
       <div class="container">
-        <div class="row g-4">
-          <div class="col-lg-7">
-            <div class="glass-card p-4 p-md-5 h-100">
+        <div class="contact-form-wrap">
+          <div class="glass-card p-4 p-md-5 contact-form">
               <h2 class="section-heading fw-semibold">Contact</h2>
               <p class="text-soft mb-4">Have a project in mind or want to connect? Send me a message.</p>
-              <form>
+              <form id="contact-form" action="https://formspree.io/f/mpqbzewv" method="POST" novalidate>
                 <div class="mb-3">
                   <label for="name" class="form-label">Name</label>
-                  <input type="text" class="form-control" id="name" placeholder="Your name">
+                  <input type="text" class="form-control form-field" id="name" name="name" autocomplete="name" placeholder="Your name" required>
                 </div>
                 <div class="mb-3">
                   <label for="email" class="form-label">Email</label>
-                  <input type="email" class="form-control" id="email" placeholder="name@example.com">
+                  <input type="email" class="form-control form-field" id="email" name="email" autocomplete="email" placeholder="name@example.com" aria-describedby="email-hint" required>
+                  <p id="email-hint" class="field-hint mt-2 mb-0">Please enter a valid email address.</p>
                 </div>
                 <div class="mb-3">
                   <label for="message" class="form-label">Message</label>
-                  <textarea class="form-control" id="message" rows="5" placeholder="Write your message"></textarea>
+                  <textarea class="form-control form-field" id="message" name="message" rows="5" placeholder="Write your message" required></textarea>
                 </div>
-                <button type="submit" class="btn btn-accent px-4">Send Message</button>
+                <div class="hp-wrap" aria-hidden="true">
+                  <label for="website">Website</label>
+                  <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+                </div>
+                <button type="submit" id="submit-btn" class="btn btn-accent px-4">
+                  <span id="submit-text">Send Message</span>
+                </button>
+                <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
               </form>
             </div>
           </div>
 
-          <div class="col-lg-5">
-            <div class="glass-card p-4 p-md-5 h-100">
+          <div class="glass-card p-4 p-md-5 mt-4">
               <h3 class="h4 mb-3">Social</h3>
               <p class="text-soft">You can also find me on these platforms:</p>
               <div class="d-flex flex-column gap-2">
@@ -300,7 +385,6 @@
               </div>
             </div>
           </div>
-        </div>
       </div>
     </section>
   </main>
@@ -318,5 +402,74 @@
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"
   ></script>
+
+  <script>
+    const contactForm = document.getElementById("contact-form");
+    const submitBtn = document.getElementById("submit-btn");
+    const submitText = document.getElementById("submit-text");
+    const statusEl = document.getElementById("form-status");
+
+    const setStatus = (message, type) => {
+      statusEl.textContent = message;
+      statusEl.className = `form-status ${type}`;
+    };
+
+    const isValidEmail = (email) => {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+    };
+
+    contactForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      setStatus("", "");
+
+      const name = contactForm.name.value.trim();
+      const email = contactForm.email.value.trim();
+      const message = contactForm.message.value.trim();
+      const website = contactForm.website.value.trim();
+
+      if (website) {
+        setStatus("Submission blocked.", "error");
+        return;
+      }
+
+      if (!name || !email || !message) {
+        setStatus("Please complete all required fields.", "error");
+        return;
+      }
+
+      if (!isValidEmail(email)) {
+        setStatus("Please enter a valid email address.", "error");
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.setAttribute("aria-busy", "true");
+      submitText.textContent = "Sending...";
+      setStatus("Sending your message...", "info");
+
+      try {
+        const response = await fetch(contactForm.action, {
+          method: "POST",
+          body: new FormData(contactForm),
+          headers: {
+            Accept: "application/json"
+          }
+        });
+
+        if (response.ok) {
+          contactForm.reset();
+          setStatus("Thanks. Your message was sent successfully.", "success");
+        } else {
+          setStatus("Could not send your message right now. Please try again.", "error");
+        }
+      } catch (error) {
+        setStatus("A network error occurred. Please try again.", "error");
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.removeAttribute("aria-busy");
+        submitText.textContent = "Send Message";
+      }
+    });
+  </script>
 </body>
 </html>
