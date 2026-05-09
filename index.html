@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dean Harland | Portfolio</title>
+  <meta name="description" content="Dean Harland is a junior full-stack Django developer building practical, deployed web apps with Python, PostgreSQL, JavaScript, and Heroku.">
+  <title>Dean Harland | Junior Django Full-Stack Developer</title>
 
-  <!-- Bootstrap 5 CDN -->
   <link
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
     rel="stylesheet"
@@ -13,145 +13,374 @@
     crossorigin="anonymous"
   >
 
-  <!-- Google Font for modern developer-style typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Custom styles -->
   <style>
     :root {
-      --bg-deep: #0b1220;
-      --bg-soft: #151f34;
-      --text-main: #e8eefc;
-      --text-muted: #9eb0d0;
-      --accent: #e63946;
-      --accent-2: #ff6b6b;
-      --card-bg: rgba(255, 255, 255, 0.04);
-      --border-soft: rgba(255, 255, 255, 0.14);
+      --page: #f7f8fb;
+      --surface: #ffffff;
+      --surface-soft: #eef3f8;
+      --ink: #14213d;
+      --muted: #5c6b7a;
+      --accent: #dc2626;
+      --accent-dark: #991b1b;
+      --accent-soft: #fee2e2;
+      --line: #dbe3ea;
+      --shadow: 0 18px 45px rgba(20, 33, 61, 0.08);
     }
- 
+
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: 5rem;
     }
 
     body {
-      font-family: "Space Grotesk", sans-serif;
-      color: var(--text-main);
-      background:
-        radial-gradient(circle at 10% 10%, rgba(230, 57, 70, 0.2), transparent 35%),
-        radial-gradient(circle at 90% 15%, rgba(255, 107, 107, 0.16), transparent 40%),
-        linear-gradient(160deg, var(--bg-deep), var(--bg-soft));
-      min-height: 100vh;
+      margin: 0;
+      color: var(--ink);
+      background: var(--page);
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
     }
 
-    .section-padding {
-      padding: 6rem 0;
+    img {
+      max-width: 100%;
     }
 
-    .glass-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border-soft);
-      backdrop-filter: blur(8px);
-      border-radius: 1rem;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    a {
+      color: var(--accent-dark);
+    }
+
+    a:hover {
+      color: var(--accent);
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible {
+      outline: 3px solid rgba(220, 38, 38, 0.32);
+      outline-offset: 3px;
     }
 
     .navbar {
-      background: rgba(8, 12, 24, 0.9);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
     }
 
-    .navbar-brand,
+    .navbar-brand {
+      color: var(--ink);
+      letter-spacing: 0;
+    }
+
     .nav-link {
-      color: var(--text-main) !important;
+      color: var(--muted);
+      font-weight: 600;
     }
 
     .nav-link:hover,
     .nav-link:focus {
-      color: var(--accent) !important;
+      color: var(--accent-dark);
+    }
+
+    .navbar-toggler {
+      border-color: #9aa8b5;
+    }
+
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2820, 33, 61, 0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+
+    .section {
+      padding: 5.5rem 0;
+    }
+
+    .section.alt {
+      background: var(--surface);
+      border-block: 1px solid var(--line);
+    }
+
+    .section-kicker {
+      margin-bottom: 0.5rem;
+      color: var(--accent-dark);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      margin-bottom: 1rem;
+      font-size: clamp(1.8rem, 3vw, 2.55rem);
+      font-weight: 800;
+      letter-spacing: 0;
+      line-height: 1.15;
+    }
+
+    .section-intro {
+      max-width: 46rem;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .hero {
+      min-height: 92vh;
+      padding: 8rem 0 5rem;
+      background:
+        linear-gradient(135deg, rgba(254, 226, 226, 0.72), rgba(255, 255, 255, 0) 42%),
+        linear-gradient(180deg, #ffffff 0%, var(--page) 100%);
     }
 
     .hero-title {
-      font-size: clamp(2rem, 5vw, 3.6rem);
-      line-height: 1.1;
-      letter-spacing: -0.02em;
+      max-width: 820px;
+      font-size: clamp(2.25rem, 7vw, 4.6rem);
+      font-weight: 800;
+      line-height: 1.03;
+      letter-spacing: 0;
     }
 
-    .hero-subtitle {
-      color: var(--text-muted);
-      max-width: 42rem;
+    .hero-copy {
+      max-width: 690px;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
     }
 
-    .btn-accent {
-      background: linear-gradient(120deg, var(--accent), var(--accent-2));
-      color: #ffffff;
+    .hero-panel,
+    .content-card,
+    .project-card,
+    .skill-group {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-panel {
+      padding: 1.5rem;
+    }
+
+    .availability {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.45rem 0.7rem;
+      color: #7f1d1d;
+      background: #fee2e2;
+      border: 1px solid #fecaca;
+      border-radius: 999px;
+      font-size: 0.92rem;
       font-weight: 700;
-      border: none;
     }
 
-    .btn-accent:hover {
+    .availability::before {
+      content: "";
+      width: 0.55rem;
+      height: 0.55rem;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+
+    .btn {
+      border-radius: 6px;
+      font-weight: 700;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus {
+      background: var(--accent-dark);
+      border-color: var(--accent-dark);
+    }
+
+    .btn-outline-primary {
+      color: var(--accent-dark);
+      border-color: var(--accent);
+    }
+
+    .btn-outline-primary:hover,
+    .btn-outline-primary:focus {
+      background: var(--accent);
+      border-color: var(--accent);
       color: #ffffff;
-      filter: brightness(1.06);
     }
 
-    .section-heading {
-      font-size: clamp(1.6rem, 3vw, 2.2rem);
-      margin-bottom: 1rem;
+    .btn-outline-dark {
+      border-color: #9aa8b5;
     }
 
-    .text-soft {
-      color: var(--text-muted);
+    .quick-fact {
+      padding-block: 1rem;
+      border-bottom: 1px solid var(--line);
     }
 
-    .skill-badge {
-      background: rgba(230, 57, 70, 0.15);
-      border: 1px solid rgba(230, 57, 70, 0.35);
-      color: #ffd7da;
+    .quick-fact:last-child {
+      border-bottom: 0;
+    }
+
+    .quick-fact strong {
+      display: block;
+      color: var(--ink);
       font-size: 0.95rem;
-      padding: 0.6rem 0.85rem;
-      border-radius: 0.7rem;
+    }
+
+    .quick-fact span {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .content-card {
+      padding: clamp(1.35rem, 3vw, 2.25rem);
+    }
+
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .project-card.featured {
+      border-color: rgba(220, 38, 38, 0.28);
     }
 
     .project-img {
+      width: 100%;
+      height: 210px;
       object-fit: cover;
-      height: 200px;
+      background: var(--surface-soft);
+      border-bottom: 1px solid var(--line);
     }
 
-    .form-control,
+    .project-body {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      padding: 1.35rem;
+    }
+
+    .project-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .status,
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 1.75rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .status {
+      color: #7f1d1d;
+      background: #fee2e2;
+      border: 1px solid #fecaca;
+    }
+
+    .status.progress {
+      color: #664d03;
+      background: #fff4d6;
+      border-color: #ffe08a;
+    }
+
+    .tag {
+      color: var(--accent-dark);
+      background: var(--accent-soft);
+      border: 1px solid rgba(220, 38, 38, 0.16);
+    }
+
+    .feature-list {
+      padding-left: 1.15rem;
+      margin-bottom: 1.2rem;
+      color: var(--muted);
+    }
+
+    .feature-list li + li {
+      margin-top: 0.35rem;
+    }
+
+    .project-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      margin-top: auto;
+    }
+
+    .skill-group {
+      height: 100%;
+      padding: 1.25rem;
+    }
+
+    .skill-group h3 {
+      margin-bottom: 0.75rem;
+      font-size: 1rem;
+      font-weight: 800;
+    }
+
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .skill-list li {
+      padding: 0.35rem 0.6rem;
+      color: #27445c;
+      background: var(--surface-soft);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .bring-item {
+      height: 100%;
+      padding: 1.25rem;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .bring-item h3 {
+      font-size: 1.05rem;
+      font-weight: 800;
+    }
+
+    .bring-item p {
+      margin-bottom: 0;
+      color: var(--muted);
+    }
+
+    .form-control {
+      min-height: 3rem;
+      color: var(--ink);
+      background: #ffffff;
+      border-color: #c9d4dd;
+      border-radius: 6px;
+    }
+
     .form-control:focus {
-      background-color: rgba(255, 255, 255, 0.05);
-      color: var(--text-main);
-      border-color: rgba(255, 255, 255, 0.2);
-      box-shadow: none;
-    }
-
-    .form-control::placeholder {
-      color: #b4c1d8;
-    }
-
-    .contact-form-wrap {
-      max-width: 760px;
-      margin: 0 auto;
-    }
-
-    .contact-form {
-      animation: fade-in-up 0.75s ease both;
-    }
-
-    .form-field {
-      transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
-    }
-
-    .form-field:focus {
-      border-color: rgba(230, 57, 70, 0.7);
-      box-shadow: 0 0 0 0.2rem rgba(230, 57, 70, 0.18);
-      transform: translateY(-1px);
+      border-color: var(--accent);
+      box-shadow: 0 0 0 0.2rem rgba(220, 38, 38, 0.16);
     }
 
     .field-hint {
-      color: var(--text-muted);
+      color: var(--muted);
       font-size: 0.9rem;
     }
 
@@ -170,55 +399,52 @@
     }
 
     .form-status.success {
-      color: #91ffc8;
+      color: #991b1b;
     }
 
     .form-status.error {
-      color: #ffb4b4;
+      color: #b42318;
     }
 
     .form-status.info {
-      color: #ffd1d6;
-    }
-
-    @keyframes fade-in-up {
-      from {
-        opacity: 0;
-        transform: translateY(18px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @media (max-width: 576px) {
-      .section-padding {
-        padding: 4rem 0;
-      }
-
-      .contact-form .btn {
-        width: 100%;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .contact-form,
-      .form-field {
-        animation: none;
-        transition: none;
-      }
+      color: var(--accent-dark);
     }
 
     footer {
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      color: #c6d2e8;
+      color: var(--muted);
+      background: #ffffff;
+      border-top: 1px solid var(--line);
+    }
+
+    @media (max-width: 991.98px) {
+      .hero {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 575.98px) {
+      .section {
+        padding: 4rem 0;
+      }
+
+      .hero {
+        padding-top: 6.5rem;
+      }
+
+      .hero .btn,
+      .project-links .btn,
+      #contact .btn {
+        width: 100%;
+      }
+
+      .project-img {
+        height: 180px;
+      }
     }
   </style>
 </head>
 <body>
-  <!-- Navbar (fixed top) -->
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <nav class="navbar navbar-expand-lg fixed-top" aria-label="Main navigation">
     <div class="container">
       <a class="navbar-brand fw-bold" href="#home">Dean Harland</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -226,177 +452,347 @@
       </button>
       <div class="collapse navbar-collapse" id="mainNav">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
           <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
           <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
           <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <main>
-    <!-- Hero Section -->
-    <section id="home" class="section-padding d-flex align-items-center" style="padding-top: 4.5rem; min-height: 100vh;">
+  <main id="home">
+    <section class="hero d-flex align-items-center">
       <div class="container">
-        <div class="row align-items-center g-4">
+        <div class="row align-items-center g-5">
           <div class="col-lg-8">
-            <p class="text-uppercase text-soft small mb-2">Portfolio</p>
-            <h1 class="hero-title fw-bold mb-3">Aspiring Django Full-Stack Developer</h1>
-            <p class="hero-subtitle fs-5 mb-4">
-              I build clean, responsive web experiences with Python and Django, while growing into a full-stack developer focused on scalable backend systems and polished frontend interfaces.
+            <p class="section-kicker">Junior full-stack developer</p>
+            <h1 class="hero-title mb-4">Django developer building practical, deployed web apps.</h1>
+            <p class="hero-copy mb-4">
+              I am Dean Harland, an aspiring junior full-stack developer focused on Python, Django, PostgreSQL, JavaScript, and Heroku deployment. I like building useful, database-backed projects with clear user flows and solid backend logic.
             </p>
-            <a href="#projects" class="btn btn-accent btn-lg px-4 py-3">View My Work</a>
+            <div class="d-flex flex-wrap gap-3 mb-4">
+              <a class="btn btn-primary btn-lg px-4" href="#projects">View Projects</a>
+              <a class="btn btn-outline-primary btn-lg px-4" href="https://github.com/DeanHarland" target="_blank" rel="noopener noreferrer">View GitHub</a>
+              <a class="btn btn-outline-dark btn-lg px-4" href="#contact">Contact Me</a>
+            </div>
+            <p class="availability mb-0">Open to junior developer opportunities, remote or UK-based</p>
           </div>
           <div class="col-lg-4">
-            <div class="glass-card p-4 text-center">
-              <h2 class="h5 mb-2">Current Focus</h2>
-              <p class="text-soft mb-0">Django apps, RESTful APIs, and modern responsive UI with Bootstrap.</p>
+            <aside class="hero-panel" aria-label="Portfolio summary">
+              <div class="quick-fact">
+                <strong>Primary stack</strong>
+                <span>Django, Python, PostgreSQL, HTML, CSS, JavaScript</span>
+              </div>
+              <div class="quick-fact">
+                <strong>Project focus</strong>
+                <span>Authentication, database models, carts, order flows, deployment, and admin workflows</span>
+              </div>
+              <div class="quick-fact">
+                <strong>Background</strong>
+                <span>BSc Computing for Games, MSc Artificial Intelligence for Games, full-stack bootcamp</span>
+              </div>
+              <div class="quick-fact">
+                <strong>Current goal</strong>
+                <span>Junior backend-leaning Django or full-stack developer role</span>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <div class="container">
+        <div class="mb-4">
+          <p class="section-kicker">Featured projects</p>
+          <h2 class="section-title">Projects that show practical full-stack development</h2>
+          <p class="section-intro">
+            These are the projects I would want a recruiter or hiring manager to look at first: real Django apps, deployed where possible, with database-backed features and everyday product logic.
+          </p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <article class="project-card featured">
+              <img src="./images/SimpleShopTempImage.png" class="project-img" alt="SimpleShop ecommerce project screenshot" width="1714" height="870" loading="lazy">
+              <div class="project-body">
+                <div class="project-meta">
+                  <span class="status">Live</span>
+                  <span class="tag">Django</span>
+                  <span class="tag">eCommerce</span>
+                  <span class="tag">Heroku</span>
+                </div>
+                <h3 class="h4 fw-bold">SimpleShop</h3>
+                <p class="text-secondary">
+                  A full-stack Django ecommerce app built to practise realistic shop behaviour, backend state, and production deployment concerns.
+                </p>
+                <p><strong>Problem it solves:</strong> Provides a small but complete shopping flow with products, cart behaviour, checkout, user accounts, and order history.</p>
+                <ul class="feature-list">
+                  <li>Product browsing with database-backed content.</li>
+                  <li>Session-based cart and checkout flow.</li>
+                  <li>User authentication and order history.</li>
+                  <li>Deployment-focused setup with hosted media/static considerations.</li>
+                </ul>
+                <div class="project-links">
+                  <a href="https://simpleshop-80f5b8cdaaaa.herokuapp.com/" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Live Site</a>
+                  <a href="https://github.com/DeanHarland/SimpleShop" class="btn btn-outline-primary" target="_blank" rel="noopener noreferrer">GitHub Repo</a>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="col-lg-6">
+            <article class="project-card featured">
+              <img src="./images/joblinker_image.png" class="project-img" alt="JobLinker job board project screenshot" width="1902" height="939" loading="lazy">
+              <div class="project-body">
+                <div class="project-meta">
+                  <span class="status">Live</span>
+                  <span class="tag">Django</span>
+                  <span class="tag">PostgreSQL</span>
+                  <span class="tag">Heroku</span>
+                </div>
+                <h3 class="h4 fw-bold">JobLinker</h3>
+                <p class="text-secondary">
+                  A Django-powered job board where employers can publish roles and job seekers can browse opportunities.
+                </p>
+                <p><strong>Problem it solves:</strong> Brings job listings and applications into a clear web workflow with different user needs in mind.</p>
+                <ul class="feature-list">
+                  <li>Employer-facing job posting flow.</li>
+                  <li>Job seeker browsing and application journey.</li>
+                  <li>Django templates, views, forms, and database models.</li>
+                  <li>Live Heroku deployment for review and testing.</li>
+                </ul>
+                <div class="project-links">
+                  <a href="https://joblinker-32ea19931b20.herokuapp.com/" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Live Site</a>
+                  <a href="https://github.com/DeanHarland/capstone_project_joblinker-" class="btn btn-outline-primary" target="_blank" rel="noopener noreferrer">GitHub Repo</a>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="col-lg-6">
+            <article class="project-card">
+              <div class="project-body">
+                <div class="project-meta">
+                  <span class="status">Live MVP</span>
+                  <span class="tag">Django</span>
+                  <span class="tag">Python</span>
+                  <span class="tag">PostgreSQL</span>
+                  <span class="tag">Heroku</span>
+                  <span class="tag">WhiteNoise</span>
+                  <span class="tag">HTML</span>
+                  <span class="tag">CSS</span>
+                  <span class="tag">JavaScript</span>
+                  <span class="tag">SEO</span>
+                  <span class="tag">Affiliate/Product Data</span>
+                </div>
+                <h3 class="h4 fw-bold">SetupHQ</h3>
+                <p class="text-secondary">
+                  SetupHQ is a Django web app that generates personalised desk and tech setup recommendations based on a user's budget, goals, and preferences. It combines a rule-based recommendation engine with curated product data and SEO landing pages.
+                </p>
+                <p><strong>Problem it solves:</strong> Helps users create budget-aware gaming, office, student, work-from-home, and streaming desk setups using curated affiliate product data.</p>
+                <ul class="feature-list">
+                  <li>Rule-based setup recommendation engine.</li>
+                  <li>Budget-aware product matching.</li>
+                  <li>Gaming, office, student, compact, RGB, ergonomic, WFH, and streaming setup paths.</li>
+                  <li>Curated product database with affiliate links.</li>
+                  <li>SEO landing pages for search-led setup guides.</li>
+                  <li>Heroku deployment with PostgreSQL-ready configuration.</li>
+                </ul>
+                <div class="project-links">
+                  <a href="https://www.setuphq.co.uk/" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Live Site</a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="section alt">
+      <div class="container">
+        <div class="mb-4">
+          <p class="section-kicker">Skills</p>
+          <h2 class="section-title">A backend-leaning full-stack toolkit</h2>
+          <p class="section-intro">I am strongest with Python and Django, and comfortable working across templates, styling, JavaScript, deployment, and project configuration.</p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-6 col-xl-4">
+            <div class="skill-group">
+              <h3>Backend</h3>
+              <ul class="skill-list">
+                <li>Python</li>
+                <li>Django</li>
+                <li>Django REST Framework</li>
+                <li>PostgreSQL</li>
+                <li>SQLite</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6 col-xl-4">
+            <div class="skill-group">
+              <h3>Frontend</h3>
+              <ul class="skill-list">
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+                <li>Bootstrap</li>
+                <li>Responsive UI</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6 col-xl-4">
+            <div class="skill-group">
+              <h3>Deployment</h3>
+              <ul class="skill-list">
+                <li>Heroku</li>
+                <li>Gunicorn</li>
+                <li>WhiteNoise</li>
+                <li>Environment variables</li>
+                <li>Static/media files</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6 col-xl-4">
+            <div class="skill-group">
+              <h3>Tools</h3>
+              <ul class="skill-list">
+                <li>Git</li>
+                <li>GitHub</li>
+                <li>VS Code</li>
+                <li>Command line</li>
+                <li>Debugging</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6 col-xl-4">
+            <div class="skill-group">
+              <h3>Learning and practice</h3>
+              <ul class="skill-list">
+                <li>APIs</li>
+                <li>Testing</li>
+                <li>Accessibility</li>
+                <li>SEO basics</li>
+                <li>AI-assisted workflow</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6 col-xl-4">
+            <div class="skill-group">
+              <h3>Product habits</h3>
+              <ul class="skill-list">
+                <li>Clear documentation</li>
+                <li>User flows</li>
+                <li>Readable code</li>
+                <li>Practical scope</li>
+                <li>Iterative improvement</li>
+              </ul>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="section-padding">
+    <section id="about" class="section">
       <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-lg-9">
-            <div class="glass-card p-4 p-md-5">
-              <h2 class="section-heading fw-semibold">About Me</h2>
-              <p class="text-soft mb-0">
-                I am an aspiring Django full-stack developer passionate about building practical web applications that solve real problems. My goal is to grow as a developer who can design intuitive frontends, write reliable backend logic, and deliver complete user-focused products using Django, Python, and modern web technologies.
+        <div class="row g-4 align-items-start">
+          <div class="col-lg-7">
+            <div class="content-card">
+              <p class="section-kicker">About</p>
+              <h2 class="section-title">Honest, practical, and ready to keep learning on a real team</h2>
+              <p>
+                I completed a full-stack bootcamp and have academic foundations from a BSc Computing for Games and an MSc Artificial Intelligence for Games. I am now focused on building real Django portfolio projects that show how I think through data, user flows, deployment, and maintainable code.
+              </p>
+              <p class="mb-0">
+                My strongest area is backend development with Django and Python, but I am comfortable working across the full stack when a project needs it. I am actively looking for junior developer opportunities, preferably remote or UK-based, where I can contribute, learn from experienced developers, and keep improving through practical work.
               </p>
             </div>
           </div>
+          <div class="col-lg-5">
+            <div class="content-card">
+              <p class="section-kicker">What I bring</p>
+              <h2 class="h3 fw-bold mb-3">Grounded junior developer value</h2>
+              <div class="row g-3">
+                <div class="col-12">
+                  <div class="bring-item">
+                    <h3>Practical Django delivery</h3>
+                    <p>I can build and deploy full-stack Django apps with real database-backed behaviour.</p>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="bring-item">
+                    <h3>Debugging mindset</h3>
+                    <p>I understand that environment settings, deployment config, static files, and data issues are part of the job.</p>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="bring-item">
+                    <h3>Clear working habits</h3>
+                    <p>I document what I build, keep scope realistic, and use AI tools responsibly as part of a developer workflow.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="section-padding pt-0">
+    <section id="contact" class="section alt">
       <div class="container">
-        <h2 class="section-heading fw-semibold text-center">Skills</h2>
-        <p class="text-soft text-center mb-4">Core tools I am using and improving every day.</p>
-        <div class="row g-3 justify-content-center">
-          <div class="col-auto"><span class="skill-badge d-inline-block">Python</span></div>
-          <div class="col-auto"><span class="skill-badge d-inline-block">Django</span></div>
-          <div class="col-auto"><span class="skill-badge d-inline-block">HTML</span></div>
-          <div class="col-auto"><span class="skill-badge d-inline-block">CSS</span></div>
-          <div class="col-auto"><span class="skill-badge d-inline-block">Bootstrap</span></div>
-          <div class="col-auto"><span class="skill-badge d-inline-block">JavaScript</span></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="section-padding pt-0">
-      <div class="container">
-        <h2 class="section-heading fw-semibold text-center">Projects</h2>
-        <p class="text-soft text-center mb-4">Selected work that reflects my full-stack learning journey.</p>
-
         <div class="row g-4">
-          <div class="col-md-6 col-lg-4">
-            <div class="card glass-card h-100 border-0">
-              <img src="./images/joblinker_image.png" class="card-img-top project-img" alt="Joblinker image">
-              <div class="card-body d-flex flex-column">
-                <h3 class="h5 card-title">JobLinker Platform</h3>
-                <p class="card-text text-soft flex-grow-1">A Django-powered job board where employers post openings and job seekers can browse and apply.</p>
-                <div class="d-flex gap-2">
-                  <a href="https://joblinker-32ea19931b20.herokuapp.com/" class="btn btn-outline-light btn-sm" target="_blank" rel="noopener noreferrer">Live Demo</a>
-                  <a href="https://github.com/DeanHarland/capstone_project_joblinker-" class="btn btn-accent btn-sm" target="_blank" rel="noopener noreferrer">GitHub</a>
-                </div>
-              </div>
+          <div class="col-lg-5">
+            <p class="section-kicker">Contact</p>
+            <h2 class="section-title">Let's talk about junior developer opportunities</h2>
+            <p class="section-intro">
+              I am open to junior backend-leaning Django and full-stack roles. GitHub, LinkedIn, and this contact form are the quickest ways to reach me.
+            </p>
+            <div class="d-flex flex-wrap gap-3 mt-4">
+              <a href="https://github.com/DeanHarland" target="_blank" rel="noopener noreferrer" class="btn btn-outline-primary">GitHub</a>
+              <a href="https://www.linkedin.com/in/dean-harland-3716891a3/" target="_blank" rel="noopener noreferrer" class="btn btn-outline-primary">LinkedIn</a>
             </div>
           </div>
-
-          <div class="col-md-6 col-lg-4">
-            <div class="card glass-card h-100 border-0">
-              <img src="https://picsum.photos/seed/project2/800/500" class="card-img-top project-img" alt="Destiny 2 clan platform image">
-              <div class="card-body d-flex flex-column">
-                <h3 class="h5 card-title">Destiny 2 Clan Platform</h3>
-                <p class="card-text text-soft flex-grow-1">Full-stack community platform for Destiny 2 clans, featuring real-time activity tracking, fireteam coordination, clan management, and social engagement tools powered by the Bungie API</p>
-                <div class="d-flex gap-2">
-                  <a href="#" class="btn btn-outline-light btn-sm">Live Demo</a>
-                  <a href="https://github.com/DeanHarland/destiny2-clan-platform" target="_blank" class="btn btn-accent btn-sm">GitHub</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-4">
-            <div class="card glass-card h-100 border-0">
-              <img src="./images/SimpleShopTempImage.png" class="card-img-top project-img" alt="SimpleShop image">
-              <div class="card-body d-flex flex-column">
-                <h3 class="h5 card-title">Simple Shop</h3>
-                <p class="card-text text-soft flex-grow-1">A full-stack Django eCommerce application featuring product browsing, a session-based cart, and a complete checkout system with user authentication and order history. Built to demonstrate real-world backend logic, database relationships, and production-ready features like cloud image storage.</p>
-                <div class="d-flex gap-2">
-                  <a href="https://simpleshop-80f5b8cdaaaa.herokuapp.com/" class="btn btn-outline-light btn-sm">Live Demo</a>
-                  <a href="https://github.com/DeanHarland/SimpleShop" class="btn btn-accent btn-sm">GitHub</a>
-                </div>
-              </div>
-            </div>
-          </div> 
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="section-padding pt-0">
-      <div class="container">
-        <div class="contact-form-wrap">
-          <div class="glass-card p-4 p-md-5 contact-form">
-              <h2 class="section-heading fw-semibold">Contact</h2>
-              <p class="text-soft mb-4">Have a project in mind or want to connect? Send me a message.</p>
+          <div class="col-lg-7">
+            <div class="content-card">
               <form id="contact-form" action="https://formspree.io/f/mpqbzewv" method="POST" novalidate>
                 <div class="mb-3">
-                  <label for="name" class="form-label">Name</label>
-                  <input type="text" class="form-control form-field" id="name" name="name" autocomplete="name" placeholder="Your name" required>
+                  <label for="name" class="form-label fw-semibold">Name</label>
+                  <input type="text" class="form-control" id="name" name="name" autocomplete="name" placeholder="Your name" required>
                 </div>
                 <div class="mb-3">
-                  <label for="email" class="form-label">Email</label>
-                  <input type="email" class="form-control form-field" id="email" name="email" autocomplete="email" placeholder="name@example.com" aria-describedby="email-hint" required>
+                  <label for="email" class="form-label fw-semibold">Email</label>
+                  <input type="email" class="form-control" id="email" name="email" autocomplete="email" placeholder="name@example.com" aria-describedby="email-hint" required>
                   <p id="email-hint" class="field-hint mt-2 mb-0">Please enter a valid email address.</p>
                 </div>
                 <div class="mb-3">
-                  <label for="message" class="form-label">Message</label>
-                  <textarea class="form-control form-field" id="message" name="message" rows="5" placeholder="Write your message" required></textarea>
+                  <label for="message" class="form-label fw-semibold">Message</label>
+                  <textarea class="form-control" id="message" name="message" rows="5" placeholder="Write your message" required></textarea>
                 </div>
                 <div class="hp-wrap" aria-hidden="true">
                   <label for="website">Website</label>
                   <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
                 </div>
-                <button type="submit" id="submit-btn" class="btn btn-accent px-4">
+                <button type="submit" id="submit-btn" class="btn btn-primary px-4">
                   <span id="submit-text">Send Message</span>
                 </button>
                 <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
               </form>
             </div>
           </div>
-
-          <div class="glass-card p-4 p-md-5 mt-4">
-              <h3 class="h4 mb-3">Social</h3>
-              <p class="text-soft">You can also find me on these platforms:</p>
-              <div class="d-flex flex-column gap-2">
-                <a href="https://github.com/DeanHarland" target="_blank" class="link-light text-decoration-none">GitHub</a>
-                <a href="https://www.linkedin.com/in/dean-harland-3716891a3/" target="_blank" class="link-light text-decoration-none">LinkedIn</a>
-              </div>
-            </div>
-          </div>
+        </div>
       </div>
     </section>
   </main>
 
-  <!-- Footer -->
   <footer class="py-4">
-    <div class="container text-center">
+    <div class="container d-flex flex-column flex-md-row justify-content-between gap-2 text-center text-md-start">
       <small>&copy; 2026 Dean Harland. All rights reserved.</small>
+      <small>Built with HTML, CSS, JavaScript, and Bootstrap.</small>
     </div>
   </footer>
 
-  <!-- Bootstrap JS Bundle CDN -->
   <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
@@ -414,9 +810,7 @@
       statusEl.className = `form-status ${type}`;
     };
 
-    const isValidEmail = (email) => {
-      return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
-    };
+    const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
 
     contactForm.addEventListener("submit", async (event) => {
       event.preventDefault();
