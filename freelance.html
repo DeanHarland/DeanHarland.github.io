@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Freelance Django and web development services from Dean Harland for small websites, landing pages, and fixed-scope web tools.">
+  <title>Freelance Django & Web Development | Dean Harland</title>
+
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+    crossorigin="anonymous"
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --page: #f7f8fb;
+      --surface: #ffffff;
+      --surface-soft: #eef3f8;
+      --ink: #14213d;
+      --muted: #5c6b7a;
+      --accent: #dc2626;
+      --accent-dark: #991b1b;
+      --accent-soft: #fee2e2;
+      --line: #dbe3ea;
+      --shadow: 0 18px 45px rgba(20, 33, 61, 0.08);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 5rem;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--page);
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+
+    a {
+      color: var(--accent-dark);
+    }
+
+    a:hover {
+      color: var(--accent);
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid rgba(220, 38, 38, 0.32);
+      outline-offset: 3px;
+    }
+
+    .navbar {
+      background: rgba(255, 255, 255, 0.96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    .navbar-brand {
+      color: var(--ink);
+      letter-spacing: 0;
+    }
+
+    .nav-link {
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .nav-link:hover,
+    .nav-link:focus,
+    .nav-link.active {
+      color: var(--accent-dark);
+    }
+
+    .navbar-toggler {
+      border-color: #9aa8b5;
+    }
+
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2820, 33, 61, 0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+
+    .section {
+      padding: 5.5rem 0;
+    }
+
+    .section.alt {
+      background: var(--surface);
+      border-block: 1px solid var(--line);
+    }
+
+    .section-kicker {
+      margin-bottom: 0.5rem;
+      color: var(--accent-dark);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      margin-bottom: 1rem;
+      font-size: clamp(1.8rem, 3vw, 2.55rem);
+      font-weight: 800;
+      letter-spacing: 0;
+      line-height: 1.15;
+    }
+
+    .section-intro {
+      max-width: 48rem;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .hero {
+      padding: 8rem 0 5rem;
+      background:
+        linear-gradient(135deg, rgba(254, 226, 226, 0.72), rgba(255, 255, 255, 0) 42%),
+        linear-gradient(180deg, #ffffff 0%, var(--page) 100%);
+    }
+
+    .hero-title {
+      max-width: 850px;
+      font-size: clamp(2.25rem, 7vw, 4.4rem);
+      font-weight: 800;
+      line-height: 1.04;
+      letter-spacing: 0;
+    }
+
+    .hero-copy {
+      max-width: 720px;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+    }
+
+    .content-card,
+    .service-card,
+    .package-card,
+    .fit-card,
+    .process-step,
+    .proof-card,
+    .faq-item {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .content-card {
+      padding: clamp(1.35rem, 3vw, 2.25rem);
+    }
+
+    .btn {
+      border-radius: 6px;
+      font-weight: 700;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus {
+      background: var(--accent-dark);
+      border-color: var(--accent-dark);
+    }
+
+    .btn-outline-primary {
+      color: var(--accent-dark);
+      border-color: var(--accent);
+    }
+
+    .btn-outline-primary:hover,
+    .btn-outline-primary:focus {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #ffffff;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 1.75rem;
+      padding: 0.2rem 0.55rem;
+      color: var(--accent-dark);
+      background: var(--accent-soft);
+      border: 1px solid rgba(220, 38, 38, 0.16);
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .service-card,
+    .package-card,
+    .fit-card,
+    .proof-card,
+    .faq-item {
+      height: 100%;
+      padding: 1.4rem;
+    }
+
+    .service-card h3,
+    .package-card h3,
+    .fit-card h3,
+    .proof-card h3,
+    .faq-item h3 {
+      font-size: 1.08rem;
+      font-weight: 800;
+    }
+
+    .muted-list {
+      padding-left: 1.15rem;
+      margin-bottom: 0;
+      color: var(--muted);
+    }
+
+    .muted-list li + li {
+      margin-top: 0.35rem;
+    }
+
+    .price {
+      margin: 0.75rem 0 1rem;
+      color: var(--accent-dark);
+      font-size: 1.55rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .price-note {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .fit-card.good {
+      border-color: rgba(220, 38, 38, 0.22);
+    }
+
+    .fit-card.not {
+      box-shadow: none;
+    }
+
+    .process-step {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1rem;
+      height: 100%;
+      padding: 1.15rem;
+    }
+
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.25rem;
+      height: 2.25rem;
+      color: #ffffff;
+      background: var(--accent);
+      border-radius: 50%;
+      font-weight: 800;
+    }
+
+    .process-step h3 {
+      margin-bottom: 0.25rem;
+      font-size: 1rem;
+      font-weight: 800;
+    }
+
+    .process-step p {
+      margin-bottom: 0;
+      color: var(--muted);
+    }
+
+    .cta-panel {
+      background: var(--ink);
+      color: #ffffff;
+      border-radius: 8px;
+      padding: clamp(1.5rem, 4vw, 3rem);
+    }
+
+    .cta-panel p {
+      color: #dbe3ea;
+    }
+
+    footer {
+      color: var(--muted);
+      background: #ffffff;
+      border-top: 1px solid var(--line);
+    }
+
+    @media (max-width: 575.98px) {
+      .section {
+        padding: 4rem 0;
+      }
+
+      .hero {
+        padding-top: 6.5rem;
+      }
+
+      .hero .btn,
+      .cta-panel .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg fixed-top" aria-label="Main navigation">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="./index.html#home">Dean Harland</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="./index.html#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="./index.html#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="./index.html#about">About</a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="./freelance.html">Freelance</a></li>
+          <li class="nav-item"><a class="nav-link" href="./index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="row g-5 align-items-center">
+          <div class="col-lg-8">
+            <p class="section-kicker">Fixed-scope freelance work</p>
+            <h1 class="hero-title mb-4">Freelance Django & Web Development</h1>
+            <p class="hero-copy mb-4">
+              I build simple, practical websites and small web tools for freelancers, sole traders, and small businesses. My focus is clear scope, useful features, mobile-friendly design, and honest handover notes.
+            </p>
+            <div class="d-flex flex-wrap gap-3">
+              <a class="btn btn-primary btn-lg px-4" href="./index.html#contact">Contact Me</a>
+              <a class="btn btn-outline-primary btn-lg px-4" href="#packages">View Packages</a>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <aside class="content-card" aria-label="Freelance summary">
+              <p class="section-kicker">Best for</p>
+              <ul class="muted-list">
+                <li>Starter business websites</li>
+                <li>Landing pages</li>
+                <li>Small Django tools</li>
+                <li>Admin-editable content</li>
+                <li>Heroku deployment for my own builds</li>
+              </ul>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="content-card">
+          <p class="section-kicker">What this means</p>
+          <h2 class="section-title">A clear project, agreed before work starts</h2>
+          <p class="section-intro mb-0">
+            Freelance web development means hiring me for a specific website or web app project instead of hiring a full-time developer. We agree the scope, price, and expected outcome before work starts, then I build and launch the agreed project. This keeps the work realistic, easy to understand, and easier to hand over.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="section alt">
+      <div class="container">
+        <div class="mb-4">
+          <p class="section-kicker">Services</p>
+          <h2 class="section-title">Small web projects with practical outcomes</h2>
+          <p class="section-intro">These are the kinds of fixed-scope projects I am best placed to help with at this stage.</p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-6">
+            <article class="service-card">
+              <div class="d-flex flex-wrap gap-2 mb-3">
+                <span class="tag">Websites</span>
+                <span class="tag">Forms</span>
+                <span class="tag">SEO basics</span>
+              </div>
+              <h3>Starter business websites</h3>
+              <p class="text-secondary">Simple, clean websites for sole traders, freelancers, local businesses, and small services.</p>
+              <ul class="muted-list">
+                <li>Home, About, Services, and Contact pages.</li>
+                <li>Mobile-friendly layout and clear calls to action.</li>
+                <li>Contact form, basic SEO setup, and deployment support.</li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="col-md-6">
+            <article class="service-card">
+              <div class="d-flex flex-wrap gap-2 mb-3">
+                <span class="tag">One page</span>
+                <span class="tag">CTA</span>
+                <span class="tag">Launch</span>
+              </div>
+              <h3>Landing pages</h3>
+              <p class="text-secondary">One-page sites for a service, project, portfolio, or small business idea.</p>
+              <ul class="muted-list">
+                <li>Clear headline, explanation, and call to action.</li>
+                <li>Contact form or button to direct enquiries.</li>
+                <li>Useful for validating an idea before building more.</li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="col-md-6">
+            <article class="service-card">
+              <div class="d-flex flex-wrap gap-2 mb-3">
+                <span class="tag">Django</span>
+                <span class="tag">Admin</span>
+                <span class="tag">Tools</span>
+              </div>
+              <h3>Small Django web tools</h3>
+              <p class="text-secondary">Small database-backed tools where a static website is not quite enough.</p>
+              <ul class="muted-list">
+                <li>Admin-editable websites, listings, and content.</li>
+                <li>Contact or enquiry forms and simple dashboards.</li>
+                <li>Rule-based recommendation tools where appropriate.</li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="col-md-6">
+            <article class="service-card">
+              <div class="d-flex flex-wrap gap-2 mb-3">
+                <span class="tag">Heroku</span>
+                <span class="tag">PostgreSQL</span>
+                <span class="tag">Handover</span>
+              </div>
+              <h3>Deployment and setup support</h3>
+              <p class="text-secondary">Deployment support for sites and Django apps I build as part of the agreed project.</p>
+              <ul class="muted-list">
+                <li>Domain connection guidance and Heroku-style deployment.</li>
+                <li>Environment variables, static files, and WhiteNoise setup.</li>
+                <li>Basic analytics, Search Console readiness, and handover notes.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <article class="fit-card good">
+              <p class="section-kicker">Good fit</p>
+              <h2 class="section-title h3">This could work well if...</h2>
+              <ul class="muted-list">
+                <li>You need a small business website or landing page.</li>
+                <li>You need a contact form or enquiry form.</li>
+                <li>You need a simple admin-editable site.</li>
+                <li>You need a small Django-based tool.</li>
+                <li>You want a clear, fixed-scope build.</li>
+              </ul>
+            </article>
+          </div>
+          <div class="col-lg-6">
+            <article class="fit-card not">
+              <p class="section-kicker">Not a good fit</p>
+              <h2 class="section-title h3">I may not be the right choice if...</h2>
+              <ul class="muted-list">
+                <li>You need a large SaaS platform immediately.</li>
+                <li>You need emergency 24/7 support.</li>
+                <li>You need complex custom integrations without a clear scope.</li>
+                <li>You need unlimited changes after launch.</li>
+                <li>You need guaranteed Google rankings.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="packages" class="section alt">
+      <div class="container">
+        <div class="mb-4">
+          <p class="section-kicker">Example packages</p>
+          <h2 class="section-title">Realistic starting points</h2>
+          <p class="section-intro">Prices depend on scope, content, hosting needs, and whether you already have branding, copy, and images.</p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-6 col-xl-3">
+            <article class="package-card">
+              <h3>Landing page</h3>
+              <p class="price">from £300</p>
+              <p class="price-note">A focused one-page site for a service, offer, or project.</p>
+            </article>
+          </div>
+          <div class="col-md-6 col-xl-3">
+            <article class="package-card">
+              <h3>Starter business website</h3>
+              <p class="price">from £500</p>
+              <p class="price-note">A small multi-page website with contact form and basic SEO setup.</p>
+            </article>
+          </div>
+          <div class="col-md-6 col-xl-3">
+            <article class="package-card">
+              <h3>Small Django website/tool</h3>
+              <p class="price">from £800</p>
+              <p class="price-note">A simple Django build with admin-managed content or small custom logic.</p>
+            </article>
+          </div>
+          <div class="col-md-6 col-xl-3">
+            <article class="package-card">
+              <h3>Larger custom work</h3>
+              <p class="price">Quoted</p>
+              <p class="price-note">Discussed after the scope, content, features, and hosting needs are clear.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="mb-4">
+          <p class="section-kicker">Process</p>
+          <h2 class="section-title">How a project usually works</h2>
+          <p class="section-intro">The aim is to keep the work clear from the start, with sensible checkpoints and no mystery handover.</p>
+        </div>
+
+        <div class="row g-3">
+          <div class="col-md-6 col-xl-4">
+            <div class="process-step">
+              <span class="step-number">1</span>
+              <div>
+                <h3>Initial chat</h3>
+                <p>We talk through what you need, who the site is for, and what success looks like.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-xl-4">
+            <div class="process-step">
+              <span class="step-number">2</span>
+              <div>
+                <h3>Scope and quote</h3>
+                <p>I outline the pages, features, deliverables, price, and expected timeline.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-xl-4">
+            <div class="process-step">
+              <span class="step-number">3</span>
+              <div>
+                <h3>Content collected</h3>
+                <p>You provide text, images, branding, domain details, and any required business information.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-xl-4">
+            <div class="process-step">
+              <span class="step-number">4</span>
+              <div>
+                <h3>Build</h3>
+                <p>I build the agreed website or tool using the chosen structure and features.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-xl-4">
+            <div class="process-step">
+              <span class="step-number">5</span>
+              <div>
+                <h3>Review and revision</h3>
+                <p>You review the build, then I make agreed revisions within the original scope.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-xl-4">
+            <div class="process-step">
+              <span class="step-number">6</span>
+              <div>
+                <h3>Launch and handover</h3>
+                <p>I help launch the project and provide clear notes for using or updating it.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="container">
+        <div class="mb-4">
+          <p class="section-kicker">Proof of approach</p>
+          <h2 class="section-title">Portfolio projects behind the offer</h2>
+          <p class="section-intro">These projects show the kind of practical Django, deployment, content, and product thinking I bring to small freelance builds.</p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-4">
+            <article class="proof-card">
+              <h3>SetupHQ</h3>
+              <p class="text-secondary mb-0">A Django setup recommendation builder with forms, rule-based logic, SEO pages, admin-managed content, sitemaps, robots.txt, Heroku deployment, and affiliate links.</p>
+            </article>
+          </div>
+          <div class="col-md-4">
+            <article class="proof-card">
+              <h3>StackPilot</h3>
+              <p class="text-secondary mb-0">A Django software and AI stack recommendation project for small businesses and freelancers, useful for showing product-led recommendation logic.</p>
+            </article>
+          </div>
+          <div class="col-md-4">
+            <article class="proof-card">
+              <h3>SimpleShop</h3>
+              <p class="text-secondary mb-0">A Django ecommerce-style project with product browsing, cart and checkout-style flows, and account/order-style backend thinking.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="mb-4">
+          <p class="section-kicker">FAQ</p>
+          <h2 class="section-title">Common questions</h2>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-6">
+            <article class="faq-item">
+              <h3>Do you provide hosting?</h3>
+              <p class="text-secondary mb-0">I can help set up deployment for projects I build, usually using Heroku or a similar service. Hosting costs are normally paid directly by you.</p>
+            </article>
+          </div>
+          <div class="col-md-6">
+            <article class="faq-item">
+              <h3>Who owns the domain and hosting account?</h3>
+              <p class="text-secondary mb-0">You should own the domain and hosting account. I can guide the setup, but it is better for the client to keep control of important accounts.</p>
+            </article>
+          </div>
+          <div class="col-md-6">
+            <article class="faq-item">
+              <h3>Can I update the site myself?</h3>
+              <p class="text-secondary mb-0">For Django projects, I can build simple admin-editable content where it fits the scope. For static pages, updates may need a small agreed change request.</p>
+            </article>
+          </div>
+          <div class="col-md-6">
+            <article class="faq-item">
+              <h3>Do you offer ongoing maintenance?</h3>
+              <p class="text-secondary mb-0">Ongoing support can be discussed separately, but it is not included by default. I include 14 days of bug-fix support after launch for issues related to the agreed project scope.</p>
+            </article>
+          </div>
+          <div class="col-md-6">
+            <article class="faq-item">
+              <h3>How long does a project take?</h3>
+              <p class="text-secondary mb-0">A small landing page may take around one to two weeks once content is ready. Django tools and multi-page sites depend on scope and review time.</p>
+            </article>
+          </div>
+          <div class="col-md-6">
+            <article class="faq-item">
+              <h3>What do you need before starting?</h3>
+              <p class="text-secondary mb-0">I usually need the goal of the site, page list, written content, images or branding, contact details, and any domain or hosting preferences.</p>
+            </article>
+          </div>
+          <div class="col-md-6">
+            <article class="faq-item">
+              <h3>Can you build custom Django features?</h3>
+              <p class="text-secondary mb-0">Yes, where the feature is small and clearly scoped. Good examples include forms, listings, simple dashboards, admin-managed content, and rule-based recommendations.</p>
+            </article>
+          </div>
+          <div class="col-md-6">
+            <article class="faq-item">
+              <h3>Do you guarantee Google rankings?</h3>
+              <p class="text-secondary mb-0">No. I can add sensible technical basics such as titles, meta descriptions, sitemap and robots.txt setup, but rankings are not guaranteed.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="container">
+        <div class="cta-panel">
+          <div class="row g-4 align-items-center">
+            <div class="col-lg-8">
+              <p class="section-kicker text-white-50">Start a conversation</p>
+              <h2 class="section-title mb-3">Have a small website or Django tool in mind?</h2>
+              <p class="mb-0">Send a short message with what you need, your rough timeline, and whether you already have content, branding, domain, or hosting in place.</p>
+            </div>
+            <div class="col-lg-4 text-lg-end">
+              <a href="./index.html#contact" class="btn btn-primary btn-lg px-4">Contact Me</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="py-4">
+    <div class="container d-flex flex-column flex-md-row justify-content-between gap-2 text-center text-md-start">
+      <small>&copy; 2026 Dean Harland. All rights reserved.</small>
+      <small>Built with HTML, CSS, JavaScript, and Bootstrap.</small>
+    </div>
+  </footer>
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"
+  ></script>
+</body>
+</html>
