@@ -1,0 +1,102 @@
+.snake-scroll {
+  --snake-right: 1rem;
+  --snake-top: 6.25rem;
+  --snake-bottom: 2rem;
+  --snake-track-width: 1.35rem;
+  --snake-dot-size: 0.42rem;
+  --snake-head-size: 0.82rem;
+  --snake-dot: rgba(20, 33, 61, 0.2);
+  --snake-eaten: rgba(220, 38, 38, 0.34);
+  --snake-head: #dc2626;
+  --snake-head-shadow: rgba(153, 27, 27, 0.25);
+
+  position: fixed;
+  top: var(--snake-top);
+  right: var(--snake-right);
+  bottom: var(--snake-bottom);
+  width: var(--snake-track-width);
+  z-index: 1020;
+  pointer-events: none;
+}
+
+.snake-scroll__track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.snake-scroll__dot,
+.snake-scroll__trail,
+.snake-scroll__head {
+  position: absolute;
+  left: 50%;
+  border-radius: 4px;
+  transform: translate(-50%, -50%);
+}
+
+.snake-scroll__dot {
+  width: var(--snake-dot-size);
+  height: var(--snake-dot-size);
+  background: var(--snake-dot);
+  opacity: 0.9;
+  transition: background-color 160ms ease, opacity 160ms ease, transform 160ms ease;
+}
+
+.snake-scroll__dot.is-eaten {
+  background: var(--snake-eaten);
+  opacity: 0.42;
+  transform: translate(-50%, -50%) scale(0.72);
+}
+
+.snake-scroll__trail {
+  width: calc(var(--snake-head-size) * 0.74);
+  height: calc(var(--snake-head-size) * 0.74);
+  background: rgba(220, 38, 38, 0.32);
+  opacity: 0;
+  transition: opacity 140ms ease;
+}
+
+.snake-scroll__head {
+  width: var(--snake-head-size);
+  height: var(--snake-head-size);
+  background: var(--snake-head);
+  box-shadow: 0 0 0 4px var(--snake-head-shadow);
+}
+
+.snake-scroll__head::before,
+.snake-scroll__head::after {
+  content: "";
+  position: absolute;
+  top: 0.2rem;
+  width: 0.11rem;
+  height: 0.11rem;
+  background: #ffffff;
+  border-radius: 50%;
+}
+
+.snake-scroll__head::before {
+  left: 0.22rem;
+}
+
+.snake-scroll__head::after {
+  right: 0.22rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .snake-scroll__dot,
+  .snake-scroll__trail {
+    transition: none;
+  }
+}
+
+@media (max-width: 900px), (hover: none) and (pointer: coarse) {
+  .snake-scroll {
+    display: none;
+  }
+}
+
+@media print {
+  .snake-scroll {
+    display: none;
+  }
+}
