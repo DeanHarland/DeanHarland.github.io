@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="What I learnt from an introductory Ministry of Testing course, from questioning requirements to exploring software and communicating findings.">
+  <title>My introduction to software testing | Dean Harland</title>
+
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+    crossorigin="anonymous"
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./snake-scroll.css">
+
+  <style>
+    :root {
+      --page: #f7f8fb;
+      --surface: #ffffff;
+      --surface-soft: #eef3f8;
+      --ink: #14213d;
+      --muted: #5c6b7a;
+      --accent: #dc2626;
+      --accent-dark: #991b1b;
+      --accent-soft: #fee2e2;
+      --line: #dbe3ea;
+      --shadow: 0 18px 45px rgba(20, 33, 61, 0.08);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 5rem;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--page);
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+
+    a {
+      color: var(--accent-dark);
+    }
+
+    a:hover {
+      color: var(--accent);
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid rgba(220, 38, 38, 0.32);
+      outline-offset: 3px;
+    }
+
+    .navbar {
+      background: rgba(255, 255, 255, 0.96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    .navbar-brand {
+      color: var(--ink);
+      letter-spacing: 0;
+    }
+
+    .nav-link {
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .nav-link:hover,
+    .nav-link:focus,
+    .nav-link.active {
+      color: var(--accent-dark);
+    }
+
+    .navbar-toggler {
+      border-color: #9aa8b5;
+    }
+
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2820, 33, 61, 0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+
+    .testing-article {
+      max-width: 46rem;
+      margin-inline: auto;
+      padding: 7rem 1.25rem 4rem;
+      font-size: 1.0625rem;
+      line-height: 1.8;
+    }
+
+    .article-header {
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .article-header h1 {
+      margin-bottom: 1rem;
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-weight: 800;
+      line-height: 1.15;
+    }
+
+    .article-byline {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .testing-article h2 {
+      margin: 2.5rem 0 1rem;
+      font-size: clamp(1.4rem, 3vw, 1.75rem);
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .testing-article p { margin-bottom: 1.25rem; }
+    .testing-article li + li { margin-top: 0.5rem; }
+    .testing-article a { text-underline-offset: 0.2em; }
+
+    footer {
+      color: var(--muted);
+      background: #ffffff;
+      border-top: 1px solid var(--line);
+    }
+
+    @media (max-width: 575.98px) {
+      .testing-article { padding-top: 6rem; }
+    }
+    a:focus-visible, button:focus-visible { outline: 3px solid var(--accent-dark); }
+    .skip-link { position: fixed; top: -5rem; left: 1rem; z-index: 1100; padding: 0.75rem; background: var(--surface); }
+    .skip-link:focus { top: 0.5rem; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <nav class="navbar navbar-expand-lg fixed-top" aria-label="Main navigation">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="./index.html#home">Dean Harland</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="./index.html#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="./index.html#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="./index.html#about">About</a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="./software-testing.html">Software Testing</a></li>
+          <li class="nav-item"><a class="nav-link" href="./freelance.html">Freelance</a></li>
+          <li class="nav-item"><a class="nav-link" href="./index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main-content" tabindex="-1">
+    <article class="testing-article" aria-labelledby="article-title">
+      <header class="article-header">
+        <h1 id="article-title">My introduction to software testing</h1>
+        <p class="article-byline">By Dean Harland · <time datetime="2026-09">September 2026</time></p>
+      </header>
+
+      <p>I recently completed an introductory Ministry of Testing course while learning software testing alongside my development work. Before starting it, I had already been checking things as I coded: trying a feature, looking at what happened and going back to the code when something seemed wrong. What I had spent less time thinking about was how to record those checks or explain what I had found to somebody else.</p>
+
+      <p>The course gave me a broader view of testing. I had associated it mainly with running software and finding bugs. My notes now include questioning requirements, thinking about risks, exploring behaviour and sharing useful information. This article is my reflection on that introduction and how it connects to the way I am learning to work.</p>
+
+      <section aria-labelledby="early-testing">
+        <h2 id="early-testing">Testing can start before there is anything to run</h2>
+        <p>One idea that stayed with me was that testing can begin while a feature is still being discussed. A written requirement can sound clear until two people explain what they think it means. Asking for an example, questioning an assumption or reviewing a design can reveal a problem before anyone has written the code. That makes testing part of the conversation about what to build.</p>
+
+        <p>For a course exercise, I considered software used in Cornwall's bus services. I listed things such as journey planners, payments, live tracking, disruption alerts and maintenance systems. It helped me think beyond the visible app: passengers and the people running a service need different information from the same wider system. This was an exercise in considering uses of software, not a test of any bus service.</p>
+
+        <p>Taking a journey planner as an example, “show the next bus” leaves room for questions. Does that mean the scheduled departure or an estimate based on live information? What should a passenger see when that information is unavailable? A design review could look at whether the distinction is understandable. During development and release, checks could examine whether the agreed behaviour works in the intended environment. Once people use it, monitoring and feedback could reveal where the information is failing them. Those are possible lines of investigation, but they helped me understand how testing can continue through the life of a feature.</p>
+      </section>
+
+      <section aria-labelledby="expectations">
+        <h2 id="expectations">An expectation and an unanswered question</h2>
+        <p>I found it useful to separate checking an agreed expectation from investigating something we do not yet understand. An agreed rule gives a test a basis for comparison. A risk or unknown gives us a reason to explore. Both can tell us something valuable, but they do not start from the same position.</p>
+
+        <p>The comment-box example in my notes makes this concrete. If the agreed rule says a comment cannot be blank, submitting an empty box has a clear expected result: it should not create a comment. Spaces, emoji and symbols bring up further questions. Do spaces count as content? Are they removed before validation? Which characters should the feature support? These are examples I considered, not results from an application I tested. Without clarifying the rules, it is easy to label behaviour a bug simply because it differs from my assumption.</p>
+
+        <p>The same thinking applies to risk. A feature might satisfy a narrow requirement while still being confusing or inaccessible. I learnt to think about who could be affected and what the consequences could be. That gives testing a direction, especially when there is more to investigate than time allows.</p>
+      </section>
+
+      <section aria-labelledby="testing-approaches">
+        <h2 id="testing-approaches">Giving checks and exploration some structure</h2>
+        <p>Written test cases made me think more carefully about the details needed to repeat a check. A case needs a clear starting point, the data to use, steps to follow and an expected outcome. When it is run, the actual result needs to be recorded separately. Something that feels obvious while I am using a feature may be far less obvious to the next person reading my notes.</p>
+
+        <p>I also learnt why a set of written cases cannot cover everything worth noticing. Exploratory testing gives room to follow a question, observe what happens and use that information to choose the next step. The direction can change as understanding improves, rather than being fixed entirely in advance.</p>
+
+        <p>That does not mean random clicking. A charter can give a session a purpose, such as exploring how a form handles unexpected input. Notes can capture what was tried, what was observed and what still needs investigation. A debrief then makes that learning available to other people. I found this helpful because it gives exploration enough structure to explain its value without pretending every step was planned beforehand.</p>
+
+        <p>Ad hoc checking is closer to the quick, informal checks I recognised from coding. It can help me learn something about a change with little preparation. The distinction I took from the course is that purposeful exploration needs more attention to its focus and record. Quick checks have a place, but relying on memory makes it difficult to say afterwards what was actually covered.</p>
+      </section>
+
+      <section aria-labelledby="wider-picture">
+        <h2 id="wider-picture">Where acceptance, automation and monitoring fit</h2>
+        <p>User acceptance testing helped connect these activities back to the reason for building the software. Its focus is whether the product meets the needs and expectations of the business or end user. It can involve written cases and exploration, with people such as a product owner or business analyst helping to judge whether the delivered behaviour is useful. Working code alone does not answer that question.</p>
+
+        <p>I learnt to see automation as support for testing. A tool can repeat a defined check or help gather information, but a person still has to decide what matters, interpret the evidence and investigate new questions. I have also tried Selenium IDE in a practical exercise. That was an introduction to browser automation, and I still have more to learn about choosing useful checks and maintaining them.</p>
+
+        <p>Monitoring extends the picture after release. Information about availability, errors or how a product is being used can draw attention to problems that need investigation. It does not prove that everything is correct, but it can provide feedback from an environment that matters to users. This was another reminder that testing is not finished simply because a release has gone out.</p>
+      </section>
+
+      <section aria-labelledby="reporting">
+        <h2 id="reporting">Making a finding useful to someone else</h2>
+        <p>Finding something unexpected is only part of the work. A useful defect report needs to help another person reproduce it and understand why it matters. From my development work, I can see how much harder it is to investigate a report that only says something does not work. The course made me pay more attention to the information that closes that gap:</p>
+
+        <ul>
+          <li>The starting conditions, test data and reproducible steps.</li>
+          <li>The expected result, its basis, and what actually happened.</li>
+          <li>The environment and software version, with relevant evidence such as a screenshot or log.</li>
+        </ul>
+
+        <p>Explaining the effect on the user matters too. A screenshot might show a symptom, but it may not explain what task is blocked or how often the problem occurs. Keeping observations separate from guesses about the cause should make a report clearer and easier to investigate.</p>
+
+        <p>My notes also challenged the idea that a bug count says much on its own. Several small presentation issues and one problem that prevents an important task are very different situations. Counts can help describe progress, but they need context about impact, coverage and what remains unknown. I took away that a useful testing update should explain what has been learnt, not just how many items have been recorded.</p>
+      </section>
+
+      <section aria-labelledby="reflection">
+        <h2 id="reflection">What I want to carry into my next exercise</h2>
+        <p>A recent practical recruitment exercise gave me a chance to review user stories, consider risks, design and run tests, and record defects. Writing clear tests took more time than I expected. My exploratory work also found things my structured cases had missed. I am keeping the exercise materials and specific findings private, but that contrast gave me something useful to reflect on.</p>
+
+        <p>I want to get better at documenting results clearly enough that somebody else can follow the work without needing me beside them. That means giving the starting conditions enough attention, recording evidence as I go and making gaps visible. I also want to keep using both structured checks and exploration on my own projects, then review where each approach helped.</p>
+
+        <p>Completing this introduction has given me a starting point for more practice. I am still learning, but I now think more about what a check tells me and how to communicate it. If you would like to discuss my learning or my development work, you can <a href="./index.html#contact">get in touch through my contact section</a>.</p>
+      </section>
+    </article>
+  </main>
+
+  <footer class="py-4">
+    <div class="container d-flex flex-column flex-md-row justify-content-between gap-2 text-center text-md-start">
+      <small>&copy; 2026 Dean Harland. All rights reserved.</small>
+      <small>Built with HTML, CSS, JavaScript, and Bootstrap.</small>
+    </div>
+  </footer>
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"
+  ></script>
+  <script src="./snake-scroll.js" defer></script>
+</body>
+</html>
